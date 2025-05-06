@@ -1,0 +1,96 @@
+body {
+  font-family: sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#app {
+  width: 100%;
+  max-width: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+.add-form input,
+.add-form select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.pet-card {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card-content {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+
+.info h2 {
+  margin: 0;
+}
+
+.actions button,
+.manage button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.manage {
+  margin-top: 10px;
+}
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+}
+.listtext{
+  font-size:20px;
+}
+h1{
+  font-size:36px;
+}

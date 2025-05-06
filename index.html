@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>MSTU5013 Final</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body class="bg-light">
+  <div id="app" class="container py-4 bigcontainer">
+    <h1 class="text-center mb-4">Digital Pet Log</h1>
+
+    <!-- Add Pet Form -->
+    <form @submit.prevent="addPet" class="card card-body mb-4">
+      <div class="mb-3">
+        <input v-model="newPet.name" class="form-control" placeholder="Pet Name" required />
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <select v-model="newPet.emoji" class="form-select" required>
+            <option disabled value="">Choose Emoji</option>
+            <option v-for="e in emojiOptions" :key="e">{{ e }}</option>
+          </select>
+        </div>
+        <div class="col">
+          <input v-model="newPet.color" type="color" class="form-control form-control-color" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Add Pet</button>
+    </form>
+
+    <!-- Pet Card -->
+    <div v-if="currentPet" class="card">
+      <div class="card-body">
+
+        <!-- Name row -->
+        <div class="text-center mb-3">
+          <div v-if="editingName" class="input-group w-75 mx-auto">
+            <input v-model="editedName" class="form-control" />
+            <button @click="saveName" class="btn btn-success">Save</button>
+          </div>
+          <div v-else>
+            <h1>{{ currentPet.name }}</h1>
+          </div>
+        </div>
+
+        <!-- Avatar + Stats -->
+        <div class="row align-items-center text-center mb-3">
+          <div class="col-4">
+            <div class="avatar mx-auto" :style="{ backgroundColor: currentPet.color }">
+              <span>{{ currentPet.emoji }}</span>
+            </div>
+          </div>
+          <div class="col-8 text-start">
+            <ul class="list-unstyled mb-0 listtext">
+              <li>❤️ Health: {{ currentPet.stats.health }}</li>
+              <li>😊 Mood: {{ currentPet.stats.mood }}</li>
+              <li>⚡ Energy: {{ currentPet.stats.energy }}</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Interaction Buttons -->
+        <div class="row g-2 mb-2">
+          <div class="col-4">
+            <button class="btn btn-outline-primary w-100" @click="updateStat('feed')">🍖 Feed</button>
+          </div>
+          <div class="col-4">
+            <button class="btn btn-outline-primary w-100" @click="updateStat('play')">🎾 Play</button>
+          </div>
+          <div class="col-4">
+            <button class="btn btn-outline-primary w-100" @click="updateStat('sleep')">🛌 Sleep</button>
+          </div>
+        </div>
+
+        <!-- Edit/Delete Buttons -->
+        <div class="row g-2 mb-2">
+          <div class="col-6">
+            <button class="btn btn-warning w-100" @click="editingName = !editingName">✏️ Edit</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-danger w-100" @click="deletePet">🗑️ Delete</button>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="row g-2">
+          <div class="col-6">
+            <button class="btn btn-outline-secondary w-100" @click="prevPet" :disabled="currentIndex === 0">⬅️ Prev</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-outline-secondary w-100" @click="nextPet" :disabled="currentIndex === pets.length - 1">Next ➡️</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.37/vue.global.prod.min.js'></script><script type="module" src="./script.js"></script>
+
+</body>
+</html>
